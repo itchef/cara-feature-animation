@@ -1,0 +1,25 @@
+{
+  "name": "cara-feature-automation",
+  "version": "1.0.0",
+  "description": "Cara app feature automation suite.",
+  "main": "runner.js",
+  "author": "Kaustav Chakraborty",
+  "license": "GPL-3.0",
+  "keywords": [
+    "Cara",
+    "Automation",
+    "Testcafe"
+  ],
+  "scripts": {
+    "test": "node src/runner.js"
+  },
+  "dependencies": {
+    "testcafe": "0.20.4",
+    "typescript": "2.9.2",
+    "@types/glob": "5.0.35",
+    "faker": "4.1.0"
+  },
+  "devDependencies": {
+    "dotenv": "6.0.0"
+  }
+}

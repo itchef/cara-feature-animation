@@ -1,0 +1,6 @@
+dest
+node_modules
+reports
+.env
+yarn-error.log
+.idea
