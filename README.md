@@ -1,5 +1,8 @@
 # Cara Feature Automation
 
+[![Build Status](https://travis-ci.org/itchef/cara-feature-animation.svg?branch=master)](https://travis-ci.org/itchef/cara-feature-animation)
+
+
 Cara feature automation is the end to end cross browser functional test for cara application.
 
 This automation suites require [Cara API](https://github.com/itchef/cara-api) and [Cara App](https://github.com/itchef/cara-app)

@@ -11,9 +11,9 @@ env:
 addons:
     chrome: stable
     firefox: latest
+
 before_install:
-    -sudo apt-get update
-    
+    - sudo apt-get update
 before_script:
     - set -e
     - sudo chown root /opt/google/chrome/chrome-sandbox
