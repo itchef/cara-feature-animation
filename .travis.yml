@@ -18,6 +18,7 @@ before_script:
     - set -e
     - sudo chown root /opt/google/chrome/chrome-sandbox
     - sudo chmod 4755 /opt/google/chrome/chrome-sandbox
+    - sudo apt-get install curl
     - if [[ `ruby -v` != 2.3.1 ]]; then
         rvm install ruby-2.3.1;
         rvm use 2.3.1 --default;
