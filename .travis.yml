@@ -1,0 +1,37 @@
+sudo: required
+language: node_js
+node_js:
+  - 8
+rvm:
+  - 2.3.1
+services:
+  - postgres
+env:
+  - MOZ_HEADLESS=1
+addons:
+    chrome: stable
+    firefox: latest
+before_script:
+    - set -e
+    - sudo chown root /opt/google/chrome/chrome-sandbox
+    - sudo chmod 4755 /opt/google/chrome/chrome-sandbox
+    - if [[ `ruby -v` != 2.3.1 ]]; then
+        rvm install ruby-2.3.1;
+        rvm use 2.3.1 --default;
+      fi
+    - ruby --version
+    - export DISPLAY=:99.0
+    - sh -e /etc/init.d/xvfb start
+    - sleep 3
+    - mkdir app
+    - cd app
+    - wget https://github.com/itchef/cara-app/archive/master.zip
+    - wget https://github.com/itchef/cara-api/archive/master.zip
+    - unzip https://github.com/itchef/cara-app/archive/master.zip
+    - unzip https://github.com/itchef/cara-api/archive/master.zip
+
+jobs:
+  include:
+    - stage: test
+      script:
+        - yarn test
