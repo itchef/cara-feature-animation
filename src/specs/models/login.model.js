@@ -43,4 +43,10 @@ export class LoginModel {
             .typeText(this.usernameField, this.username)
             .typeText(this.passwordField, this.password)
     }
+
+    async logout(t) {
+        return t
+            .click(Selector("#user-menu"))
+            .click(Selector("#logout-menu-item"))
+    }
 }
