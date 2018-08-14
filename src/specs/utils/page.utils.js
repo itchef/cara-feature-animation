@@ -6,4 +6,8 @@ export class PageUtils {
     getLogin() {
         return `${this.appUrl}/login`;
     }
+
+    dashboard() {
+        return this.appUrl;
+    }
 }

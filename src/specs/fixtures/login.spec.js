@@ -30,8 +30,6 @@ const systemConfig = new SystemConfig();
 const page = new PageUtils(systemConfig.getAppURL());
 
 fixture("User login")
-    .beforeEach(async t => {
-    })
     .page(page.getLogin());
 
 test("should successfully login admin user", async t => {
@@ -61,3 +59,11 @@ test("should remain login button disabled when password length is less than 10",
     await t.expect(Selector("#login-button").hasAttribute("disabled")).ok();
 });
 
+test("should successfully logout admin user", async t => {
+    let successSnackBar = Selector(".mat-snack-bar-container").find('.mat-simple-snackbar');
+    let loginModel = new LoginModel(systemConfig.getAdminUserName(), systemConfig.getAdminPassword());
+    await loginModel.login(t);
+    await t.wait(6000);
+    await loginModel.logout(t);
+    await t.expect(successSnackBar.innerText).eql(`Thank you for using Cara. See you soon`);
+});

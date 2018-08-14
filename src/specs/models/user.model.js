@@ -19,24 +19,24 @@
  * @author Kaustav Chakraborty
  */
 
-import { Selector } from "testcafe";
-import { LoginModel } from "../models/login.model";
-import { SystemConfig } from "../config/system.config";
-import {PageUtils} from "../utils/page.utils";
+import {Selector} from "testcafe";
 
-const systemConfig = new SystemConfig();
-const page = new PageUtils(systemConfig.getAppURL());
+export class UserModel {
+    constructor() {
+        this.firstNameField = Selector('[formcontrolname="first_name"]');
+        this.lastNameField = Selector('[formcontrolname="last_name"]');
+        this.username = Selector('[formcontrolname="username"]');
+        this.password = Selector('[formcontrolname="password"]');
+        this.passwordConfirmation = Selector('[formcontrolname="password_confirmation"]');
+    }
 
-fixture("User logout")
-    .beforeEach(async t => {
-    })
-    .page(page.getLogin());
-
-test("should successfully logout admin user", async t => {
-    let successSnackBar = Selector(".mat-snack-bar-container").find('.mat-simple-snackbar');
-    let loginModel = new LoginModel(systemConfig.getAdminUserName(), systemConfig.getAdminPassword());
-    await loginModel.login(t);
-    await t.wait(5000);
-    await loginModel.logout(t);
-    await t.expect(successSnackBar.innerText).eql(`Thank you for using Cara. See you soon`);
-});
+    async create(userForm, t) {
+        return t
+            .typeText(this.firstNameField, userForm.firstName)
+            .typeText(this.lastNameField, userForm.lastName)
+            .typeText(this.username, userForm.username)
+            .typeText(this.password, userForm.password)
+            .typeText(this.passwordConfirmation, userForm.passwordConfirmation)
+            .click(Selector("#create-user"))
+    }
+}
