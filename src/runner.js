@@ -26,7 +26,7 @@ const runTests = function (suite) {
         .then((testFiles) => {
             return runner
                 .src(testFiles)
-                .browsers(["chrome", "firefox"])
+                .browsers(["chrome:headless"])
                 .screenshots("reports/screenshots/", true)
                 .reporter("spec")
                 .run()

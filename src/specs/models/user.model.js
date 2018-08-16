@@ -37,6 +37,13 @@ export class UserModel {
             .typeText(this.username, userForm.username)
             .typeText(this.password, userForm.password)
             .typeText(this.passwordConfirmation, userForm.passwordConfirmation)
-            .click(Selector("#create-user"))
+            .click(Selector("#create-user"));
+    }
+
+    async changePassword(form, t) {
+        return t
+            .typeText(this.password, form.password)
+            .typeText(this.passwordConfirmation, form.passwordConfirmation)
+            .click(Selector("#update-password"));
     }
 }
